@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CPlus2ASP Fiddle</title>
+                
+                <!--CSS Files-->
+                <!-- Joint JS Core -->
+                <link rel="stylesheet" type="text/css" href="css/joint.css" />
+                
+                <!-- Code Mirror Core -->                
+		<link rel="stylesheet" type="text/css" href="css/codemirror.css">	
+                
+                <!-- Code Mirror Autocomplete Extension -->
+		<link rel="stylesheet" type="text/css" href="css/show-hint.css" />	                
+                
+                <!-- JQuery UI -->
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+                
+                <!-- Custom CSS -->
+		<link rel="stylesheet" type="text/css" href="css/index.css" />	
+                 <!--End CSS-->
+		
+                <!--JavaScript Files (Order Dependent!)-->
+                <!-- Joint JS (note: This implements JQuery. Be sure to include separate JQuery if this is removed. -->
+                <script type="text/javascript" src="js/joint.js"></script> 
+                
+                <!-- JQuery UI -->
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+                
+                <!-- CodeMirror -->
+   		<script type="text/javascript" src="js/codemirror.js"></script>		
+                
+                <!-- Code Mirror CPlus2ASP Mode (add/change this for different modes) -->
+		<script type="text/javascript" src="js/cplus2asp-cm.js"></script>
+                
+                <!-- Code Mirror CPlus2ASP Autocomplete (add to/change this for different autocomplete settings) -->
+                <script type="text/javascript" src="js/cplus2asp-hint.js"></script> 
+                
+                <!-- Code Mirror "Close Brackets" Plugin -->
+		<script type="text/javascript" src="js/closebrackets.js"></script>
+                
+                <!-- Code Mirror "Match Brackets" Plugin -->
+		<script type="text/javascript" src="js/matchbrackets.js"></script>  
+                
+                <!-- Code Mirror "Autocomplete" Plugin -->
+		<script type="text/javascript" src="js/show-hint.js"></script>    
+                
+                <!-- UI Interaction Custom JavaScript -->
+		<script type="text/javascript" src="js/main.js"></script>
+                
+                <!-- Transition System Modeling Custom JavaScript -->
+		<script type="text/javascript" src="js/transitions.js"></script>   
+
+	</head>
+	<body>
+		<div id="content" class="content">
+                    <div id="tabs">
+                        <ul>
+                            <li><a href="#cplus">C+ Code</a></li>	
+                            <li><a href="#output">Output</a></li>	
+                        </ul>
+                        <div id="cplus">
+                            <a id="compile" class="command">Set Options and Compile...</a> 
+                            <span class="info-text r">Press Ctrl+Space to autocomplete keywords.</span>
+                            <textarea id="code"></textarea>                                 
+                        </div>
+                        <div id="output">
+                            <a id="show-tsys" class="command hidden">Show Transition System</a>
+                            <div id="output-panel" class="output"></div>   
+                        </div>
+                    </div>
+                    <div class="easel-container hidden">
+                        <div><a id="show-output" class="command">Show Text Output</a></div>
+                        <div id="easel"></div>
+                    </div>
+		</div>
+                <div id="dialog" class="hidden dialog" title="Set Compile Options">
+                    <div>
+                        <input type="checkbox" id="show-transitions">
+                        <label for="show-transitions"> Display Transition System</label>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                                Language:
+                            </td>
+                            <td class="r">
+                                <select id="language">
+                                    <option value="bc+">BC+</option>
+                                    <option value="bc">BC</option>
+                                    <option value="c+">C+</option>
+                                </select>
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td>
+                                Query:
+                            </td>
+                            <td class="r">
+                                <select id="query-select">
+                                    <option value="label">Label</option>                                    
+                                    <option value="sat">Satisfiability</option>
+                                    <option value="transitions">Transitions</option>
+                                    <option value="states">States</option>
+                                </select>
+                                <input type="text" id="query" class="query-input" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                # Solutions (0 returns all):
+                            </td>
+                            <td class="r">
+                                <input type="text" id="sol" class="numberbox" value="1" />
+                            </td>
+                        </tr>                          
+                        <tr>
+                            <td>
+                                Minstep:
+                            </td>
+                            <td class="r">
+                                <input type="text" id="minstep" class="numberbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Maxstep:
+                            </td>
+                            <td class="r">
+                                <input type="text" id="maxstep" class="numberbox" />
+                            </td>
+                        </tr>     
+                    </table>
+                    <a id="run" class="command r">Run...</a>  
+                    <span id="running" class="hidden r">Running please wait...</span>
+                </div>
+	</body>
+</html>
